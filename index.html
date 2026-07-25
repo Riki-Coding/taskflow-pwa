@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TaskFlow Mobile</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4F46E5">
+</head>
+<body>
+    <div id="login-screen" class="screen">
+        <div class="auth-box glass">
+            <h1>TaskFlow</h1>
+            <p>Manajemen tugas jadi lebih mudah</p>
+            <form id="login-form">
+                <input type="text" id="login-username" placeholder="Username" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit" class="btn">Login</button>
+                <p style="margin-top: 16px; font-size: 0.9rem;">Belum punya akun? <a href="#" id="btn-toggle-register" style="color: var(--primary);">Daftar</a></p>
+            </form>
+            <form id="register-form" style="display: none;">
+                <input type="text" id="reg-name" placeholder="Nama Lengkap" required>
+                <input type="text" id="reg-username" placeholder="Username" required>
+                <input type="password" id="reg-password" placeholder="Password" required>
+                <button type="submit" class="btn">Daftar</button>
+                <p style="margin-top: 16px; font-size: 0.9rem;">Sudah punya akun? <a href="#" id="btn-toggle-login" style="color: var(--primary);">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-app" class="screen" style="display: none;">
+        <header class="app-bar glass">
+            <h2 id="user-greeting">Halo, User</h2>
+            <button id="theme-toggle">🌙</button>
+        </header>
+        <div class="container">
+            <div id="dashboard-view" class="view-section active">
+                <div class="stats-grid">
+                    <div class="stat-card glass"><h2 id="stat-total">0</h2><p>Total</p></div>
+                    <div class="stat-card glass"><h2 id="stat-done">0</h2><p>Selesai</p></div>
+                    <div class="stat-card glass"><h2 id="stat-todo">0</h2><p>Sisa</p></div>
+                </div>
+                <div class="progress-container glass">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;"><span>Progress</span><span id="progress-text">0% Selesai</span></div>
+                    <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+                </div>
+                <div class="controls-grid">
+                    <input type="text" id="search-task" placeholder="Cari tugas...">
+                    <select id="filter-task" class="glass"><option value="all">Semua Status</option><option value="todo">Belum Selesai</option><option value="done">Selesai</option></select>
+                    <select id="sort-task" class="glass"><option value="deadline">Urut: Deadline</option><option value="priority">Urut: Prioritas</option></select>
+                </div>
+                <div id="task-list" class="task-list" style="margin-top: 20px;"></div>
+            </div>
+            <div id="calendar-view" class="view-section">
+                <h3>Jadwal & Deadline</h3>
+                <p style="margin-bottom: 20px;">Daftar tugas yang memiliki tenggat waktu.</p>
+                <div id="calendar-task-list" class="task-list"></div>
+            </div>
+            <div id="activity-view" class="view-section">
+                <h3>Log Aktivitas</h3>
+                <div id="activity-list" style="margin-top: 16px;"></div>
+            </div>
+            <div id="settings-view" class="view-section">
+                <h3>Pengaturan</h3>
+                <div class="settings-menu">
+                    <button id="btn-export" class="btn glass">📥 Export Data (Backup)</button>
+                    <button id="btn-import" class="btn glass">📤 Import Data (Restore)</button>
+                    <input type="file" id="import-file" accept=".json" style="display: none;">
+                    <button id="btn-logout" class="btn btn-danger" style="margin-top: 20px;">🚪 Logout</button>
+                </div>
+            </div>
+        </div>
+        <button id="fab-add" class="fab">➕</button>
+        <nav class="bottom-nav glass">
+            <button class="nav-item active" data-target="dashboard-view">🏠</button>
+            <button class="nav-item" data-target="calendar-view">📅</button>
+            <button class="nav-item" data-target="activity-view">⏱️</button>
+            <button class="nav-item" data-target="settings-view">⚙️</button>
+        </nav>
+    </div>
+
+    <div id="task-modal" class="modal-overlay">
+        <div class="modal-content glass">
+            <div class="modal-header"><h2 id="modal-title">Tambah Tugas</h2><button id="btn-close-modal" class="btn-icon">❌</button></div>
+            <form id="task-form">
+                <input type="text" id="task-title" placeholder="Judul Tugas" required>
+                <textarea id="task-desc" placeholder="Deskripsi Tugas" rows="3"></textarea>
+                <select id="task-priority"><option value="low">Prioritas: Rendah</option><option value="med" selected>Prioritas: Sedang</option><option value="high">Prioritas: Tinggi</option></select>
+                <input type="date" id="task-deadline" required>
+                <button type="submit" class="btn">Simpan Tugas</button>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
