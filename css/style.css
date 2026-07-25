@@ -5,7 +5,7 @@ body { background: var(--bg-color); color: var(--text-main); transition: backgro
 .glass { background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 16px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }
 .container { max-width: 600px; margin: 0 auto; padding: 16px; }
 h1, h2, h3 { color: var(--text-main); margin-bottom: 8px; }
-p { color: var(--text-muted); }
+p { color: var(--text-muted); } 
 input, select, textarea { width: 100%; padding: 12px; margin-bottom: 16px; border-radius: 8px; border: 1px solid var(--glass-border); background: transparent; color: var(--text-main); outline: none; }
 input:focus, select:focus, textarea:focus { border-color: var(--primary); }
 .btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
